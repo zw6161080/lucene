@@ -12,7 +12,6 @@ import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
 import org.wltea.analyzer.lucene.IKAnalyzer;
-import org.wltea.analyzer.lucene.IKPinyinAnalyzer;
 
 import java.io.File;
 import java.io.IOException;
@@ -146,7 +145,7 @@ public class IndexCommon {
 	}
 	
 	public static Analyzer getAnalyzer() {
-		return analyzer==null ? analyzer = new IKPinyinAnalyzer("","none", false):analyzer;
+		return analyzer==null ? analyzer = new IKAnalyzer():analyzer;
 	}
 	/**
 	 * 分词器测试
