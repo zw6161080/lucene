@@ -13,11 +13,7 @@ import java.util.List;
 @Service
 public class ProductServiceImpl implements ProductService {
 
-	/**
-	 * 数据库管理dao
-	 */
-	@Autowired
-	private ProductDao productDao;
+
 
 	/**
 	 * 索引管理dao
@@ -27,10 +23,10 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public void createIndexDump() {
-		//查询数据库获得全部商品
+	/*	//查询数据库获得全部商品
 		List<ProductModel> proList = productDao.selectAll();
 		//创建商品的全文索引
-		indexDao.createDump(proList);
+		indexDao.createDump(proList);*/
 	}
 
 	@Override
