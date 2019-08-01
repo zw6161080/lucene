@@ -66,52 +66,8 @@
 </script>
 </head>
 <body class="root61">
-<div id="shortcut-2013">
-	<div class="w">
-		<ul class="fl lh">
-			<li class="fore1 ld"><b></b><a href="#" rel="nofollow">收藏京东</a></li>
-		</ul>
-		<ul class="fr lh">
-			<li class="fore1" id="loginbar">您好，欢迎来到京东！<span><a href="#">[登录]</a> <a href="#" class="link-regist">[免费注册]</a></span></li>
-			<li class="fore2 ld">
-				<s></s>
-				<a href="#" rel="nofollow">我的订单</a>
-			</li>
-			<li class="fore2-1 ld" id="jd-vip"><i></i>
-				<i></i>
-				<s></s>
-				<a target="_blank" rel="nofollow" href="http://vip.jd.com/">会员俱乐部</a>
-			</li>
-			<li class="fore2-2 ld" id="jd-dakehu">        <i></i><s></s>        <a href="http://b.jd.com/" target="_blank" rel="nofollow">企业频道</a>    </li>
-			<li class="fore3 ld menu" id="app-jd" data-widget="dropdown" clstag="homepage|keycount|home2013|01d"><s></s>
-				<i></i>
-				<span class="outline"></span>
-				<span class="blank"></span>
-				<a href="http://app.jd.com/" target="_blank">手机京东</a>
-				<b></b>
-			</li>
-			<li class="fore4 ld menu" id="biz-service" data-widget="dropdown">
-				<s></s>
-				<span class="outline"></span>
-				<span class="blank"></span>
-				客户服务
-				<b></b>
-			</li>
-			<li class="fore5 ld menu" id="site-nav" data-widget="dropdown">
-				<s></s>
-				<span class="outline"></span>
-				<span class="blank"></span>
-				网站导航
-				<b></b>
-			</li>
-		</ul>
-		<span class="clr"></span>
-	</div>
-</div><!--shortcut end-->
 <div id="o-header-2013">
 	<div class="w" id="header-2013">
-		<div id="logo-2013" class="ld"><a href="http://www.jd.com/" hidefocus="true"><b></b><img src="<c:url value='/resource'/>/logo-201305.png" width="270" height="60" alt="京东"></a></div>
-		<!--logo end-->
 		<div id="search-2013">
 			<div class="i-search ld">
 				<ul id="shelper" class="hide"></ul>
@@ -129,27 +85,6 @@
 			</div>
 			<div id="hotwords"></div>
 		</div>
-		<!--search end-->
-		<div id="my360buy-2013">
-			<dl>
-				<dt class="ld"><s></s><a href="http://home.jd.com/">我的京东</a><b></b></dt>
-				<dd>
-					<div class="loading-style1"><b></b>加载中，请稍候...</div>
-				</dd>
-			</dl>
-		</div>
-		<!--my360buy end-->
-		<div id="settleup-2013">
-			<dl>
-				<dt class="ld"><s></s><span class="shopping"><span id="shopping-amount">0</span></span><a href="http://cart.jd.com/cart/cart.html" id="settleup-url">去购物车结算</a> <b></b> </dt>
-				<dd>
-					<div class="prompt">
-						<div class="loading-style1"><b></b>加载中，请稍候...</div>
-					</div>
-				</dd>
-			</dl>
-		</div>
-		<!--settleup end-->
 	</div>
 	<!--header end-->
 	<div class="w">
