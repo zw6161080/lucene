@@ -101,7 +101,7 @@
                         <div class="lh-wrap">
                             <div class="p-img">
                                 <a target="_blank" href="#">
-                                    <img width="220" height="282" class="err-product"
+                                    <img width="220" height="282"
                                          src="<c:url value='/images'/>/${item.picture}">
                                 </a>
                             </div>

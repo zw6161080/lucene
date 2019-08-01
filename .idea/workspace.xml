@@ -8,9 +8,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1ce72724-5c1c-40ee-ac82-0d40a4fac761" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/web_war_exploded/WEB-INF/jsp/product_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/WEB-INF/jsp/product_list.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/product_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/product_list.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/resource/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/resource/base.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/resource/pop_compare.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/resource/pop_compare.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -76,11 +76,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/product_list.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-133">
-              <caret line="14" column="75" lean-forward="true" selection-start-line="14" selection-start-column="75" selection-end-line="14" selection-end-column="75" />
+            <state relative-caret-position="-90">
+              <caret line="70" column="25" selection-start-line="70" selection-start-column="24" selection-end-line="70" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -88,15 +88,19 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/resource/plist20131112.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="549" column="7" selection-start-line="549" selection-start-column="1" selection-end-line="549" selection-end-column="7" />
+            <state relative-caret-position="207">
+              <caret line="571" column="18" lean-forward="true" selection-start-line="571" selection-start-column="18" selection-end-line="571" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/resource/base.css">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="233">
+              <caret line="1320" column="28" lean-forward="true" selection-start-line="1320" selection-start-column="28" selection-end-line="1320" selection-end-column="28" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -129,6 +133,12 @@
       <find>style-1-cropbar-clipper</find>
       <find>pop-compare</find>
       <find>market</find>
+      <find>button</find>
+      <find>margin</find>
+      <find>.root61 .w</find>
+      <find>w</find>
+      <find>root61</find>
+      <find>i-search</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -160,8 +170,8 @@
         <option value="$PROJECT_DIR$/src/com/ushareit/lucene/common/IndexCommon.java" />
         <option value="$PROJECT_DIR$/config/config.properties" />
         <option value="$PROJECT_DIR$/web/resource/pop_compare.css" />
-        <option value="$PROJECT_DIR$/web/resource/base.css" />
         <option value="$PROJECT_DIR$/web/WEB-INF/jsp/product_list.jsp" />
+        <option value="$PROJECT_DIR$/web/resource/base.css" />
       </list>
     </option>
   </component>
@@ -181,10 +191,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="11" />
-    <option name="y" value="2" />
-    <option name="width" value="1348" />
-    <option name="height" value="690" />
+    <option name="x" value="-10" />
+    <option name="y" value="-10" />
+    <option name="width" value="1940" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -365,15 +375,16 @@
       <workItem from="1564458946026" duration="14049000" />
       <workItem from="1564494447915" duration="8682000" />
       <workItem from="1564631748588" duration="504000" />
-      <workItem from="1564634028426" duration="3502000" />
+      <workItem from="1564634028426" duration="6379000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26737000" />
+    <option name="totallyTimeSpent" value="29614000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2600536" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -386,13 +397,13 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32891566" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.44759208" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.44759208" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Application Servers" order="7" weight="0.32891566" />
       <window_info anchor="bottom" id="Spring" order="8" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.32719547" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32719547" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="12" />
@@ -640,20 +651,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/resource/base.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/resource/plist20131112.css">
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/product_list.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="549" column="7" selection-start-line="549" selection-start-column="1" selection-end-line="549" selection-end-column="7" />
+        <state relative-caret-position="-90">
+          <caret line="70" column="25" selection-start-line="70" selection-start-column="24" selection-end-line="70" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/product_list.jsp">
+    <entry file="file://$PROJECT_DIR$/web/resource/plist20131112.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-133">
-          <caret line="14" column="75" lean-forward="true" selection-start-line="14" selection-start-column="75" selection-end-line="14" selection-end-column="75" />
+        <state relative-caret-position="207">
+          <caret line="571" column="18" lean-forward="true" selection-start-line="571" selection-start-column="18" selection-end-line="571" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/resource/base.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="1320" column="28" lean-forward="true" selection-start-line="1320" selection-start-column="28" selection-end-line="1320" selection-end-column="28" />
         </state>
       </provider>
     </entry>
