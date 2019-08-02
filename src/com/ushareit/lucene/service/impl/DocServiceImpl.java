@@ -19,6 +19,8 @@ public class DocServiceImpl implements DocService {
     public DocResultModel getProductList(String searchString, int limit, String[] blackList, int page) throws Exception {
         return docsIndexDao.doSearchWithQueryParse(searchString,limit, blackList,page);
     }
+
+
     @Test
     public void testService() throws Exception {
         DocServiceImpl s = new DocServiceImpl();

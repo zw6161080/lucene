@@ -1,18 +1,18 @@
 package com.ushareit.lucene.dao.impl;
 import java.io.*;
-import	java.io.ObjectInputStream.GetField;
+
 
 import com.ushareit.lucene.common.Config;
+import com.ushareit.lucene.common.DocsUtil;
 import com.ushareit.lucene.common.IndexCommon;
 import com.ushareit.lucene.dao.DocsIndexDao;
 import com.ushareit.lucene.model.DocModel;
 import com.ushareit.lucene.model.DocResultModel;
-import com.ushareit.lucene.model.ProductModel;
-import com.ushareit.lucene.model.ResultModel;
+
+import com.ushareit.lucene.model.lucene.IKAnalyzer;
+import com.ushareit.lucene.model.lucene.IKPinyinAnalyzer;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.filefilter.WildcardFileFilter;
-import org.apache.commons.io.filefilter.WildcardFilter;
-import org.apache.lucene.analysis.Analyzer;
+
 import org.apache.lucene.document.*;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.queryparser.classic.ParseException;
@@ -24,6 +24,7 @@ import org.apache.lucene.search.highlight.SimpleHTMLFormatter;
 import org.apache.lucene.store.FSDirectory;
 import org.junit.Test;
 import org.springframework.ui.Model;
+
 
 import javax.print.Doc;
 import java.beans.Transient;
@@ -44,7 +45,6 @@ public class DocsIndexDaoImpl implements DocsIndexDao {
         File[] files = file.listFiles();
         //建立索引
         for (File f : files){
-
             Document document = new Document();
             String fileName = f.getName().split(".txt")[0];
             Field fileNameField = new TextField("fileName",fileName.split(".txt")[0], Field.Store.YES);
@@ -93,6 +93,12 @@ public class DocsIndexDaoImpl implements DocsIndexDao {
      */
     @Override
     public DocResultModel doSearchWithQueryParse(String searchContent, int limit, String[] blacklist,int page) throws ParseException, IOException {
+        //如果输入的不是汉字那么采用拼音分词器
+        if(!DocsUtil.isChineseCharacters(searchContent)){
+            IndexCommon.setAnalyzer(new IKPinyinAnalyzer("","none",false));
+        }else{
+            IndexCommon.setAnalyzer(new IKAnalyzer());
+        }
         IndexSearcher indexSearcher = IndexCommon.getIndexSearcher();
         BooleanQuery booleanQuery = new BooleanQuery();
 
