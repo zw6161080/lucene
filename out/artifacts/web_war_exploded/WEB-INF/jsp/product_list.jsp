@@ -43,7 +43,11 @@
 
         function changePage(p) {
             var curpage = Number(document.getElementById("page").value);
-            curpage = curpage + p;
+            if((curpage<=1&& p<0)||(curpage>=${pageCount}&& p>0))
+            {;}
+            else
+            {curpage = curpage + p;}
+
             document.getElementById("page").value = curpage;
             queryList();
         }
@@ -117,8 +121,9 @@
                 </dl>
                 <div class="pagin pagin-m">
                     <span class="text"><i>${curPage }</i>/${pageCount }</span>
-                    <a href="javascript:changePage(-1)" class="prev">上一页<b></b></a>
-                    <a href="javascript:changePage(1)" class="next">下一页<b></b></a>
+
+                    <a href="javascript:changePage(-1);" class="prev">上一页<b></b></a>
+                    <a href="javascript:changePage(1);" class="next">下一页<b></b></a>
                 </div>
                 <div class="total">
 			<span>共<strong>${recordCount }</strong>条数据
