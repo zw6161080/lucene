@@ -52,27 +52,61 @@
 <body class="root61">
 <div id="o-header-2013">
     <div class="w" id="header-2013">
-        <div id="search-2013">
-            <div class="i-search ld">
-                <ul id="shelper" class="hide"></ul>
-                <form id="actionForm" action="docList.action" method="POST">
+        <div id="search-2013" >
+            <form id="actionForm" action="docList.action" method="POST">
+                <div class="i-search ld" style="float:left">
+
                     <div class="form">
+
                         <input type="text" class="text" accesskey="s" name="queryString" id="key"
                                value="${queryString }"
                                autocomplete="off" onkeydown="javascript:if(event.keyCode==13) {query()}">
+
                         <input type="button" value="搜索" class="button" onclick="query()">
+
+
+
+                        <input type="hidden" name="catalog_name" id="catalog_name" value="${catalog_name }"/>
+                        <input type="hidden" name="price" id="price" value="${price }"/>
+                        <input type="hidden" name="page" id="page" value="${curPage }"/>
+                        <input type="hidden" name="sort" id="sort" value="${sort }"/>
                     </div>
-                    <input type="hidden" name="catalog_name" id="catalog_name" value="${catalog_name }"/>
-                    <input type="hidden" name="price" id="price" value="${price }"/>
-                    <input type="hidden" name="page" id="page" value="${curPage }"/>
-                    <input type="hidden" name="sort" id="sort" value="${sort }"/>
-                </form>
-            </div>
+                </div>
+                <div id="modelchoose">
+                    <select name="model" class="select" >
+                    <option value="1" selected="false" >纯净模式</option>
+                    <option value="2" selected="true">无广告模式</option>
+                    <option value="3" selected="false">隐私模式</option>
+                </select>
+                </div>
+            </form>
+
             <div id="hotwords"></div>
         </div>
     </div>
-    <!--header end-->
+
 </div>
+<!--header end-->
+<div class="w">
+    <div id="nav-2013">
+        <%--        <div id="categorys-2013" class="categorys-2014">--%>
+        <%--            <div class="mt ld">--%>
+        <%--                <h2><a href="http://www.jd.com/allSort.aspx">全部商品分类<b></b></a></h2>--%>
+        <%--            </div>--%>
+        <%--        </div>--%>
+        <div id="treasure"></div>
+        <ul id="navitems-2013">
+            <li class="fore1" id="nav-home"><a href="#">热搜</a></li>
+            <li class="fore2" id="nav-fashion"><a href="#"></a></li>
+            <li class="fore3" id="nav-chaoshi"><a href="#">逛一逛</a></li>
+            <li class="fore4" id="nav-tuan"><a href="#" target="_blank"></a></li>
+            <li class="fore5" id="nav-auction"><a href="#">精选</a></li>
+            <li class="fore6" id="nav-shan"><a href="#"></a></li>
+            <li class="fore7" id="nav-jinrong"><a href="#" target="_blank">猜你喜欢</a></li>
+        </ul>
+    </div>
+</div>
+
 <div class="w main">
     <div class="right-extra">
         <div id="filter">
