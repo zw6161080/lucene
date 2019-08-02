@@ -1,20 +1,3 @@
-<<<<<<< HEAD
-#header-2013 {
-    margin-left: 50%;
-    height: 60px;
-    padding: 15px 0
-}
-
-#search-2013 {
-    float: left;
-    width: 330px;
-    padding: 0px 0px 0 0
-=======
-
-
-
-
-
 
 #header-2013 {
 
@@ -38,7 +21,6 @@
     float: left;
     width: 330px;
     padding: 4px 86px 0 0
->>>>>>> xiaochun_dev
 }
 
 #search-2013 input {
@@ -68,11 +50,7 @@
 #search-2013 .text {
     width: 216px;
     height: 20px;
-<<<<<<< HEAD
-    padding: 5px;
-=======
     padding: 1px;
->>>>>>> xiaochun_dev
     background-position: 0 -360px;
     background-color: #fff;
     background-repeat: repeat-x;
@@ -83,10 +61,7 @@
 }
 
 #search-2013 .button {
-<<<<<<< HEAD
-=======
 
->>>>>>> xiaochun_dev
     width: 78px;
     background: #E4393C;
     font-size: 14px;
@@ -123,20 +98,6 @@
     box-shadow: 2px 2px 3px #d2d2d2 inset
 }
 
-<<<<<<< HEAD
-.root61 #search-2013 {
-    width: 510px;
-    padding-right: 126px
-}
-
-.root61 #search-2013 .i-search {
-    width: 494px
-}
-
-.root61 #search-2013 .text {
-    width: 406px
-}
-=======
 
 
 

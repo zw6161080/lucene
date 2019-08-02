@@ -48,7 +48,8 @@
 </head>
 <body>
 <div id="o-header-2013">
-    <div id="header-2013" style="position: absolute; left: 50%; top: 50%; margin-left: -50px; margin-top: -16px;text-align: center;">
+    <div id="header-2013" >
+
         <div id="search-2013">
             <div class="i-search ld">
                 <form id="actionForm" action="docList.action" method="POST">
@@ -68,5 +69,19 @@
     </div>
     <!--header end-->
 </div>
+<%--<<<<<<< HEAD--%>
+<%--<div class="search bar6">--%>
+<%--    <form>--%>
+<%--        <input type="text" placeholder="请输入您要搜索的内容...">--%>
+<%--        <button type="submit"></button>--%>
+<%--    </form>--%>
+<%--</div>--%>
+<%--=======--%>
+<%--<div class="search bar6">--%>
+<%--    <form>--%>
+<%--        <input type="text" placeholder="请输入您要搜索的内容...">--%>
+<%--        <button type="submit"></button>--%>
+<%--    </form>--%>
+<%--</div>--%>
 </body>
 </html>
