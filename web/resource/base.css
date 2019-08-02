@@ -1325,6 +1325,23 @@ img.err-price {
     height: 30px;
     overflow: hidden
 }
+#modelchoose{
+    float:right;
+    width:50%;
+    height: 30px;
+    padding: 5px;
+}
+#modelchoose .select{
+
+    width: 90px;
+    height: 30px;
+    padding: 1px;
+    background: #E4393C;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+
+}
 
 #search-2013 .text {
     width: 216px;
@@ -1346,6 +1363,9 @@ img.err-price {
     font-weight: 700;
     color: #fff
 }
+
+
+
 
 #search-2013 .text, #search-2013 .button {
     -webkit-appearance: none;
