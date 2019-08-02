@@ -55,7 +55,7 @@
         <div id="search-2013">
             <div class="i-search ld">
                 <ul id="shelper" class="hide"></ul>
-                <form id="actionForm" action="list.action" method="POST">
+                <form id="actionForm" action="docList.action" method="POST">
                     <div class="form">
                         <input type="text" class="text" accesskey="s" name="queryString" id="key"
                                value="${queryString }"
@@ -95,26 +95,14 @@
         </div>
         <!--商品列表开始-->
         <div id="plist" class="m plist-n7 plist-n8 prebuy">
-            <ul class="list-h">
+            <table>
                 <c:forEach var="item" items="${list }">
-                    <li pid="${item.pid }">
-                        <div class="lh-wrap">
-                            <div class="p-img">
-                                <a target="_blank" href="#">
-                                    <img width="220" height="282"
-                                         src="<c:url value='/images'/>/${item.picture}">
-                                </a>
-                            </div>
-                            <div class="p-name">
-                                <a target="_blank" href="#">${item.name }</a>
-                            </div>
-                            <div class="p-price">
-                                <strong>￥${item.price }</strong><span id="p1269191543"></span>
-                            </div>
-                        </div>
-                    </li>
+                    <tr>
+                        <td><a href=${item.fileUrl}>${item.fileName}</a></td>
+                        <td>${item.fileContent}</td>
+                    </tr>
                 </c:forEach>
-            </ul>
+            </table>
         </div>
         <!--商品列表结束-->
     </div>

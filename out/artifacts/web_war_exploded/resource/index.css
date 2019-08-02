@@ -1,0 +1,98 @@
+#header-2013 {
+    margin-left: 50%;
+    height: 60px;
+    padding: 15px 0
+}
+
+#search-2013 {
+    float: left;
+    width: 330px;
+    padding: 0px 0px 0 0
+}
+
+#search-2013 input {
+    margin: 0;
+    padding: 0;
+    height: 30px;
+    border: 0
+}
+
+#search-2013 .i-search {
+    z-index: 11;
+    width: 304px;
+    height: 30px;
+    margin-bottom: 3px;
+    border: 3px solid #E4393C
+}
+
+.root61 #search-2013 .i-search {
+    margin-left: -50%;
+}
+
+#search-2013 .form {
+    height: 30px;
+    overflow: hidden
+}
+
+#search-2013 .text {
+    width: 216px;
+    height: 20px;
+    padding: 5px;
+    background-position: 0 -360px;
+    background-color: #fff;
+    background-repeat: repeat-x;
+    line-height: 20px;
+    color: #999;
+    font-family: arial, "\5b8b\4f53";
+    font-size: 14px
+}
+
+#search-2013 .button {
+    width: 78px;
+    background: #E4393C;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff
+}
+
+#search-2013 .text, #search-2013 .button {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0
+}
+
+#search-2013 #shelper {
+    overflow: hidden;
+    position: absolute;
+    top: 32px;
+    left: -3px;
+    width: 308px;
+    border: 1px solid #E4393C;
+    background: #fff;
+    -moz-box-shadow: 0 0 5px #999;
+    -webkit-box-shadow: 0 0 5px #999;
+    box-shadow: 0 0 5px #999
+}
+
+#search-2013 #shelper li.close:hover {
+    background: 0
+}
+
+#search-2013 .text:focus {
+    background-color: #fcfcfc;
+    -webkit-box-shadow: 2px 2px 3px #d2d2d2 inset;
+    -moz-box-shadow: 2px 2px 3px #d2d2d2 inset;
+    box-shadow: 2px 2px 3px #d2d2d2 inset
+}
+
+.root61 #search-2013 {
+    width: 510px;
+    padding-right: 126px
+}
+
+.root61 #search-2013 .i-search {
+    width: 494px
+}
+
+.root61 #search-2013 .text {
+    width: 406px
+}
