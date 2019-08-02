@@ -10,7 +10,9 @@ import com.ushareit.lucene.model.ResultModel;
 import com.ushareit.lucene.service.DocService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DocServiceImpl implements DocService {
     DocsIndexDao docsIndexDao = new DocsIndexDaoImpl();
     @Override
