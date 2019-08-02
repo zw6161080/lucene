@@ -14,7 +14,9 @@ public class Config {
 	private static int pageSize;
 	
 	private static Properties properties;
-	static{
+    private static  String docsPath ;
+
+    static{
 		properties = new Properties();
 		InputStream in = Config.class.getResourceAsStream("/config.properties");
 		try {
@@ -42,6 +44,9 @@ public class Config {
 		if (properties.containsKey("index.path")) {
 			indexPath = properties.getProperty("index.path");
 		}
+        if (properties.containsKey("docs.path")) {
+            docsPath = properties.getProperty("docs.path");
+        }
 		if (properties.containsKey("search.max")) {
 			String max = properties.getProperty("search.max");
 			searchMax = Integer.parseInt(max);
@@ -63,6 +68,7 @@ public class Config {
 	public static String getIndexPath() {
 		return indexPath;
 	}
+	public static String getDocsPath(){return docsPath;}
 	public static int getSearchMax() {
 		return searchMax;
 	}
