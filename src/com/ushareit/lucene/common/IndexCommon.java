@@ -1,5 +1,7 @@
 package com.ushareit.lucene.common;
 
+import com.ushareit.lucene.model.lucene.IKAnalyzer;
+import com.ushareit.lucene.model.lucene.IKPinyinAnalyzer;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
@@ -11,10 +13,11 @@ import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
-import org.wltea.analyzer.lucene.IKAnalyzer;
+
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 
 public class IndexCommon {
 
@@ -60,11 +63,11 @@ public class IndexCommon {
 			return indexWriter;
 		}
 		try {
-			Directory dir = FSDirectory.open(new File(Config.getIndexPath()));
+			Directory dir = FSDirectory.open( Paths.get(Config.getIndexPath()));
 			//判断是否以及指定分词器，如未指定使用默认分词器
 			Analyzer analyzer = getAnalyzer();
 			//创建IndexWriter的配置
-			IndexWriterConfig config  = new IndexWriterConfig(Version.LATEST, analyzer);
+			IndexWriterConfig config  = new IndexWriterConfig(analyzer);
 			indexWriter = new IndexWriter(dir, config);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -89,7 +92,7 @@ public class IndexCommon {
 					path.mkdirs();
 				}
 			}
-			Directory dir = FSDirectory.open(path);
+			Directory dir = FSDirectory.open(Paths.get(path.getPath()));
 			indexReader = DirectoryReader.open(dir);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -122,15 +125,19 @@ public class IndexCommon {
 	 */
 	public static void setAnalyzer(Analyzer analyzer) {
 		IndexCommon.analyzer = analyzer;
+		indexReader=null;
+		indexWriter=null;
+
 		//更改解析器后重新初始化IndexWriter
-		if (indexWriter != null) {
+		/*if (indexWriter != null) {
 			try {
 				indexWriter.close();
+				indexWriter = null;
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			indexWriter = null;
+
 		}
 		//更改解析器后重新初始化IndexReader
 		if (indexReader != null) {
@@ -141,7 +148,7 @@ public class IndexCommon {
 				e.printStackTrace();
 			}
 			indexReader = null;
-		}
+		}*/
 	}
 	
 	public static Analyzer getAnalyzer() {
