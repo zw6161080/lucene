@@ -29,8 +29,7 @@ import org.springframework.ui.Model;
 
 import javax.print.Doc;
 import java.beans.Transient;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class DocsIndexDaoImpl implements DocsIndexDao {
     /**
@@ -41,6 +40,7 @@ public class DocsIndexDaoImpl implements DocsIndexDao {
     @Override
     public void buildIndex() throws IOException {
         //IndexCommon.setAnalyzer(new IKSynonymAnalyzer());
+        //IndexCommon.setAnalyzer(new IKPinyinAnalyzer("","none",false));
         IndexWriter indexWriter = IndexCommon.getIndexWriter();
         File file = new File(Config.getDocsPath());
         File[] files = file.listFiles();
@@ -219,7 +219,11 @@ public class DocsIndexDaoImpl implements DocsIndexDao {
                 model.setFileContent(document.get("fileContent"));
                 model.setFileUrl(document.get("fileUrl"));
                 //将商品对象添加到列表中
+
                 docModelList.add(model);
+                Set<DocModel> s = new LinkedHashSet<>(docModelList);
+                docModelList.clear();
+                docModelList = new ArrayList<>(s);
             }
         } catch (Exception e) {
             e.printStackTrace();
