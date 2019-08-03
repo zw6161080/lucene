@@ -35,7 +35,7 @@ public class IndexDaoImpl implements IndexDao {
 	@Override
 	public void createDump(List<ProductModel> list ) {
 		//获得IndexWriter对象
-		IndexWriter writer = IndexCommon.getIndexWriter();
+		IndexWriter writer = IndexCommon.getIndex0Writer();
 		//创建索引前先清空
 		try {
 			writer.deleteAll();
@@ -174,7 +174,7 @@ public class IndexDaoImpl implements IndexDao {
 		ResultModel resultModel = new ResultModel();
 		
 		//获得IndexSearcher对象
-		IndexSearcher searcher = IndexCommon.getIndexSearcher();
+		IndexSearcher searcher = IndexCommon.getIndex0Searcher();
 		//商品列表
 		List<ProductModel> productList = new ArrayList<>();
 		try {

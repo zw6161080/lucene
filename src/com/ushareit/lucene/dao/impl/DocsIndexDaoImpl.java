@@ -3,6 +3,7 @@ import java.io.*;
 
 
 import com.ushareit.lucene.common.Config;
+import com.ushareit.lucene.common.ConsistentHashing;
 import com.ushareit.lucene.common.DocsUtil;
 import com.ushareit.lucene.common.IndexCommon;
 import com.ushareit.lucene.dao.DocsIndexDao;
@@ -41,7 +42,8 @@ public class DocsIndexDaoImpl implements DocsIndexDao {
     @Override
     public void buildIndex() throws IOException {
         //IndexCommon.setAnalyzer(new IKSynonymAnalyzer());
-        IndexWriter indexWriter = IndexCommon.getIndexWriter();
+        IndexWriter indexWriter0 = null;
+        IndexWriter indexWriter1 = null;
         File file = new File(Config.getDocsPath());
         File[] files = file.listFiles();
         //建立索引
@@ -62,10 +64,20 @@ public class DocsIndexDaoImpl implements DocsIndexDao {
             document.add(fileSizeField);
             document.add(fileContentField);
             document.add(filePathField);
-            indexWriter.addDocument(document);
+            int hashcode = document.hashCode();
+            String server = ConsistentHashing.getServer(hashcode);
+            if(server.equals("192.168.0.0:111")){
+                indexWriter0 = IndexCommon.getIndex0Writer();
+                indexWriter0.addDocument(document);
+//                indexWriter0.close();
+            }else if(server.equals("192.168.0.1:111")){
+                indexWriter1 = IndexCommon.getIndex1Writer();
+                indexWriter1.addDocument(document);
+//                indexWriter1.close();
+            }
         }
-        indexWriter.close();
-
+        indexWriter0.close();
+        indexWriter1.close();
     }
 
     /**
@@ -75,12 +87,14 @@ public class DocsIndexDaoImpl implements DocsIndexDao {
     @Override
     public void deleteAllIndex()  {
         try {
-            IndexCommon.getIndexWriter().deleteAll();
+            IndexCommon.getIndex0Writer().deleteAll();
+            IndexCommon.getIndex1Writer().deleteAll();
         } catch (IOException e) {
             e.printStackTrace();
         }
         try {
-            IndexCommon.getIndexWriter().close();
+            IndexCommon.getIndex0Writer().close();
+            IndexCommon.getIndex1Writer().close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -100,7 +114,8 @@ public class DocsIndexDaoImpl implements DocsIndexDao {
         }else{
             IndexCommon.setAnalyzer(new IKSynonymAnalyzer());
         }
-        IndexSearcher indexSearcher = IndexCommon.getIndexSearcher();
+        IndexSearcher indexSearcher0 = IndexCommon.getIndex0Searcher();
+        IndexSearcher indexSearcher1 = IndexCommon.getIndex1Searcher();
         BooleanQuery booleanQuery = new BooleanQuery();
 
         QueryParser parser = new QueryParser("fileContent",IndexCommon.getAnalyzer());
@@ -141,7 +156,7 @@ public class DocsIndexDaoImpl implements DocsIndexDao {
     }
     @Test
     public void testQuery() throws IOException, ParseException {
-        DocResultModel resultModel = doSearchWithQueryParse("尤文图斯",1000,new String[]{"尤文图斯"},1);
+        DocResultModel resultModel = doSearchWithQueryParse("日本",1000,new String[]{"尤文图斯"},1);
         System.out.println(resultModel.getDocList().get(0).getFileContent());
     }
     /**
@@ -178,12 +193,22 @@ public class DocsIndexDaoImpl implements DocsIndexDao {
         DocResultModel resultModel = new DocResultModel();
 
         //获得IndexSearcher对象
-        IndexSearcher searcher = IndexCommon.getIndexSearcher();
+        IndexSearcher searcher0 = IndexCommon.getIndex0Searcher();
+        IndexSearcher searcher1 = IndexCommon.getIndex1Searcher();
         List<DocModel> docModelList = new ArrayList<>();
 
         //List<ProductModel> productList = new ArrayList<>();
         try {
-            ScoreDoc[] scoreDocs = searcher.search(query,limit).scoreDocs;
+            ScoreDoc[] scoreDocs0= searcher0.search(query,limit).scoreDocs;
+            ScoreDoc[] scoreDocs1 = searcher1.search(query,limit).scoreDocs;
+            ScoreDoc[] scoreDocs = new ScoreDoc[scoreDocs0.length+scoreDocs1.length];
+            //合并数组
+            for(int x=0;x<scoreDocs0.length;x++){
+                scoreDocs[x] = scoreDocs0[x];
+            }
+            for(int y=0;y<scoreDocs1.length;y++){
+                scoreDocs[scoreDocs0.length+y]=scoreDocs1[y];
+            }
             //商品总数
             resultModel.setRecordCount((long)scoreDocs.length);
             //计算总页数
@@ -212,7 +237,12 @@ public class DocsIndexDaoImpl implements DocsIndexDao {
 
             //遍历查询索引结果
             for (int i = start; i < end; i++) {
-                Document document = searcher.doc(scoreDocs[i].doc);
+                Document document = null;
+                if(i<scoreDocs0.length){
+                    document = searcher0.doc(scoreDocs0[i].doc);
+                }else{
+                    document = searcher1.doc(scoreDocs1[i-scoreDocs0.length].doc);
+                }
                 //商品对象
                 DocModel model = new DocModel();
                 model.setFileName(document.get("fileName"));
@@ -233,8 +263,9 @@ public class DocsIndexDaoImpl implements DocsIndexDao {
         BufferedReader r = new BufferedReader(new FileReader(file));
         String url = r.readLine();
         r.close();
-        if(url.contains("http"))return url;
-        else return null;
+//        if(url.contains("http"))return url;
+//        else return null;
+        return "1";
     }
 
 
