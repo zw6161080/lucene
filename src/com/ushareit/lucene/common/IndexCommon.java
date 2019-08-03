@@ -12,6 +12,7 @@ import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
+import org.apache.lucene.store.Lock;
 import org.apache.lucene.util.Version;
 
 
@@ -24,25 +25,44 @@ public class IndexCommon {
 	/**
 	 * 索引库路径
 	 */
-	private static IndexWriter indexWriter;
-	private static IndexReader indexReader;
-	private static IndexSearcher indexSearcher;
+	private static IndexWriter indexWriter0;
+	private static IndexWriter indexWriter1;
+	private static IndexReader indexReader0;
+	private static IndexReader indexReader1;
+	private static IndexSearcher indexSearcher0;
+	private static IndexSearcher indexSearcher1;
 	private static Analyzer analyzer;
-	
+
 	static{
 		Runtime.getRuntime().addShutdownHook(new Thread() {
 			public void run() {
-				if (indexWriter!=null) {
+				if (indexWriter0!=null) {
 					try {
-						indexWriter.close();
+						indexWriter0.close();
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
-				if (indexReader != null) {
+				if (indexWriter1!=null) {
 					try {
-						indexReader.close();
+						indexWriter1.close();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				if (indexReader0 != null) {
+					try {
+						indexReader0.close();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				if (indexReader1 != null) {
+					try {
+						indexReader1.close();
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -52,27 +72,38 @@ public class IndexCommon {
 		});
 	}
 
-	/**
-	 * 获得IndexWriter对象
-	 * <p>Title: getIndexWriter</p>
-	 * <p>Description: </p>
-	 * @return
-	 */
-	public static IndexWriter getIndexWriter() {
-		if (indexWriter != null) {
-			return indexWriter;
+	public static IndexWriter getIndex0Writer() {
+		if (indexWriter0 != null) {
+			return indexWriter0;
 		}
 		try {
-			Directory dir = FSDirectory.open( Paths.get(Config.getIndexPath()));
+			Directory dir = FSDirectory.open( Paths.get(Config.getIndex0Path()));
 			//判断是否以及指定分词器，如未指定使用默认分词器
 			Analyzer analyzer = getAnalyzer();
 			//创建IndexWriter的配置
 			IndexWriterConfig config  = new IndexWriterConfig(analyzer);
-			indexWriter = new IndexWriter(dir, config);
+			indexWriter0 = new IndexWriter(dir, config);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return indexWriter;
+		return indexWriter0;
+	}
+
+	public static IndexWriter getIndex1Writer() {
+		if (indexWriter1 != null) {
+			return indexWriter1;
+		}
+		try {
+			Directory dir = FSDirectory.open( Paths.get(Config.getIndex1Path()));
+			//判断是否以及指定分词器，如未指定使用默认分词器
+			Analyzer analyzer = getAnalyzer();
+			//创建IndexWriter的配置
+			IndexWriterConfig config  = new IndexWriterConfig(analyzer);
+			indexWriter1 = new IndexWriter(dir, config);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return indexWriter1;
 	}
 	
 	/**
@@ -81,38 +112,69 @@ public class IndexCommon {
 	 * <p>Description: </p>
 	 * @return
 	 */
-	public static IndexReader getIndexReader() {
-		if (indexReader != null) {
-			return indexReader;
+	public static IndexReader getIndex0Reader() {
+		if (indexReader0 != null) {
+			return indexReader0;
 		}
 		try {
-			File path = new File(Config.getIndexPath());
+			File path = new File(Config.getIndex0Path());
 			if (!path.exists()) {
 				if (path.isDirectory()) {
 					path.mkdirs();
 				}
 			}
 			Directory dir = FSDirectory.open(Paths.get(path.getPath()));
-			indexReader = DirectoryReader.open(dir);
+			indexReader0 = DirectoryReader.open(dir);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return indexReader;
+		return indexReader0;
 	}
+
+	public static IndexReader getIndex1Reader() {
+		if (indexReader1 != null) {
+			return indexReader1;
+		}
+		try {
+			File path = new File(Config.getIndex1Path());
+			if (!path.exists()) {
+				if (path.isDirectory()) {
+					path.mkdirs();
+				}
+			}
+			Directory dir = FSDirectory.open(Paths.get(path.getPath()));
+			indexReader1 = DirectoryReader.open(dir);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return indexReader1;
+	}
+
 	/**
 	 * 索引查询对象
 	 * <p>Title: getIndexSearcher</p>
 	 * <p>Description: </p>
 	 * @return
 	 */
-	public static IndexSearcher getIndexSearcher() {
-		if (indexSearcher != null ) {
-			return indexSearcher;
+	public static IndexSearcher getIndex0Searcher() {
+		if (indexSearcher0 != null ) {
+			return indexSearcher0;
 		}
-		indexSearcher = new IndexSearcher(getIndexReader());
+		indexSearcher0 = new IndexSearcher(getIndex0Reader());
 		
-		return indexSearcher;
+		return indexSearcher0;
+
+	}
+
+	public static IndexSearcher getIndex1Searcher() {
+		if (indexSearcher1 != null ) {
+			return indexSearcher1;
+		}
+		indexSearcher1 = new IndexSearcher(getIndex1Reader());
+
+		return indexSearcher1;
 
 	}
 
@@ -125,8 +187,8 @@ public class IndexCommon {
 	 */
 	public static void setAnalyzer(Analyzer analyzer) {
 		IndexCommon.analyzer = analyzer;
-		indexReader=null;
-		indexWriter=null;
+//		indexReader=null;
+//		indexWriter=null;
 
 		//更改解析器后重新初始化IndexWriter
 		/*if (indexWriter != null) {

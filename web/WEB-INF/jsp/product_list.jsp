@@ -14,17 +14,20 @@
     <script type="text/javascript"
             src="<c:url value='/resource'/>/jquery-1.2.6.pack.js"></script>
     <script type="text/javascript">
+
         function query() {
             document.getElementById("catalog_name").value = "";
             document.getElementById("price").value = "";
             document.getElementById("page").value = "";
+            localStorage.setItem("textSearchValue",document.getElementById("key").value);
             queryList();
         }
 
         function queryList() {
-            document.getElementById("actionForm").submit();
-        }
 
+            document.getElementById("actionForm").submit();
+
+        }
         function filter(key, value) {
             document.getElementById(key).value = value;
             queryList();
@@ -43,8 +46,12 @@
 
         function changePage(p) {
             var curpage = Number(document.getElementById("page").value);
+
             curpage = curpage + p;
             document.getElementById("page").value = curpage;
+            window.msg="nihao";
+            document.getElementById("key").value=localStorage.getItem("textSearchValue");
+
             queryList();
         }
     </script>
@@ -65,19 +72,21 @@
                         <input type="button" value="搜索" class="button" onclick="query()">
 
 
-
+                        <input type="hidden" name="textValueName" id="textValueId"/>
                         <input type="hidden" name="catalog_name" id="catalog_name" value="${catalog_name }"/>
                         <input type="hidden" name="price" id="price" value="${price }"/>
                         <input type="hidden" name="page" id="page" value="${curPage }"/>
                         <input type="hidden" name="sort" id="sort" value="${sort }"/>
+
+
                     </div>
                 </div>
                 <div id="modelchoose">
                     <select name="model" class="select" >
-                    <option value="1" selected="false" >纯净模式</option>
-                    <option value="2" selected="true">无广告模式</option>
-                    <option value="3" selected="false">隐私模式</option>
-                </select>
+                        <option value="1" selected="false" >纯净模式</option>
+                        <option value="2" selected="true">无广告模式</option>
+                        <option value="3" selected="false">隐私模式</option>
+                    </select>
                 </div>
             </form>
 
@@ -117,8 +126,16 @@
                 </dl>
                 <div class="pagin pagin-m">
                     <span class="text"><i>${curPage }</i>/${pageCount }</span>
-                    <a href="javascript:changePage(-1)" class="prev">上一页<b></b></a>
-                    <a href="javascript:changePage(1)" class="next">下一页<b></b></a>
+
+                    <c:if test="${curPage<=1}" >
+                        <a href="#" class="prev"  style="opacity: 0.2">上一页<b></b></a></c:if>
+                    <c:if test="${curPage>1}" >
+                        <a href="javascript:changePage(-1);" class="prev" id="prePage">上一页<b></b></a></c:if>
+
+                    <c:if test="${curPage<pageCount}" >
+                        <a href="javascript:changePage(1);" class="next" id="nextPage">下一页<b></b></a></c:if>
+                    <c:if test="${curPage>=pageCount}" >
+                        <a href="#" class="next"  style="opacity: 0.2">下一页<b></b></a></c:if>
                 </div>
                 <div class="total">
 			<span>共<strong>${recordCount }</strong>条数据

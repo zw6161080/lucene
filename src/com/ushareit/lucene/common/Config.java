@@ -9,7 +9,8 @@ public class Config {
 	private static String connectionUrl;
 	private static String connectionUsername;
 	private static String connectionPassword;
-	private static String indexPath;
+	private static String index0Path;
+	private static String index1Path;
 	private static int searchMax;
 	private static int pageSize;
 	
@@ -41,8 +42,11 @@ public class Config {
 		if (properties.containsKey("connection.password")) {
 			connectionPassword = properties.getProperty("connection.password");
 		}
-		if (properties.containsKey("index.path")) {
-			indexPath = properties.getProperty("index.path");
+		if (properties.containsKey("index0.path")) {
+			index0Path = properties.getProperty("index0.path");
+		}
+		if (properties.containsKey("index1.path")) {
+			index1Path = properties.getProperty("index1.path");
 		}
         if (properties.containsKey("docs.path")) {
             docsPath = properties.getProperty("docs.path");
@@ -65,8 +69,11 @@ public class Config {
 	public static String getConnectionPassword() {
 		return connectionPassword;
 	}
-	public static String getIndexPath() {
-		return indexPath;
+	public static String getIndex0Path() {
+		return index0Path;
+	}
+	public static String getIndex1Path() {
+		return index1Path;
 	}
 	public static String getDocsPath(){return docsPath;}
 	public static int getSearchMax() {
