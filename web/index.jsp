@@ -16,6 +16,7 @@
         }
 
         function queryList() {
+            localStorage.setItem("textSearchValue",document.getElementById("queryString").value);
             document.getElementById("actionForm").submit();
         }
     </script>
@@ -26,7 +27,7 @@
         <img src="resource/logo-201305.png">
     </div>
     <form id="actionForm" action="docList.action" method="POST">
-        <input type="text" placeholder="请输入您要搜索的内容..." name="queryString" value="${queryString }">
+        <input type="text" placeholder="请输入您要搜索的内容..." name="queryString" id="queryString" value="${queryString }">
         <button type="button" onclick="query()"></button>
     </form>
 </div>
