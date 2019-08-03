@@ -19,7 +19,7 @@
             document.getElementById("catalog_name").value = "";
             document.getElementById("price").value = "";
             document.getElementById("page").value = "";
-            sessionStorage.setItem("textSearchValue",document.getElementById("key").value);
+            localStorage.setItem("textSearchValue",document.getElementById("key").value);
             queryList();
         }
 
@@ -50,7 +50,7 @@
             curpage = curpage + p;
             document.getElementById("page").value = curpage;
             window.msg="nihao";
-            document.getElementById("key").value=sessionStorage.getItem("textSearchValue");
+            document.getElementById("key").value=localStorage.getItem("textSearchValue");
 
             queryList();
         }
