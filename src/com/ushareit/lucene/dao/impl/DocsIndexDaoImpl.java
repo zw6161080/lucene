@@ -11,6 +11,7 @@ import com.ushareit.lucene.model.DocResultModel;
 
 import com.ushareit.lucene.model.lucene.IKAnalyzer;
 import com.ushareit.lucene.model.lucene.IKPinyinAnalyzer;
+import com.ushareit.lucene.model.lucene.IKSynonymAnalyzer;
 import org.apache.commons.io.FileUtils;
 
 import org.apache.lucene.document.*;
@@ -39,7 +40,7 @@ public class DocsIndexDaoImpl implements DocsIndexDao {
     @Test
     @Override
     public void buildIndex() throws IOException {
-
+        //IndexCommon.setAnalyzer(new IKSynonymAnalyzer());
         IndexWriter indexWriter = IndexCommon.getIndexWriter();
         File file = new File(Config.getDocsPath());
         File[] files = file.listFiles();
@@ -97,7 +98,7 @@ public class DocsIndexDaoImpl implements DocsIndexDao {
         if(!DocsUtil.isChineseCharacters(searchContent)){
             IndexCommon.setAnalyzer(new IKPinyinAnalyzer("","none",false));
         }else{
-            IndexCommon.setAnalyzer(new IKAnalyzer());
+            IndexCommon.setAnalyzer(new IKSynonymAnalyzer());
         }
         IndexSearcher indexSearcher = IndexCommon.getIndexSearcher();
         BooleanQuery booleanQuery = new BooleanQuery();
