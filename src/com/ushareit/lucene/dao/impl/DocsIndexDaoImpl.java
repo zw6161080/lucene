@@ -1,4 +1,5 @@
 package com.ushareit.lucene.dao.impl;
+import java.awt.image.IndexColorModel;
 import java.io.*;
 
 
@@ -44,7 +45,7 @@ public class DocsIndexDaoImpl implements DocsIndexDao {
 
         IndexWriter indexWriter0 = null;
         IndexWriter indexWriter1 = null;
-
+        IndexCommon.setAnalyzer(new IKSynonymAnalyzer());
         File file = new File(Config.getDocsPath());
         File[] files = file.listFiles();
         //建立索引
@@ -130,6 +131,7 @@ public class DocsIndexDaoImpl implements DocsIndexDao {
            }
         }
         DocResultModel resultList = queryIndex(booleanQuery,limit, page);
+
         //如果是根据关键字查询的结果，需要高亮显示关键字
         if (keyWordQuery != null) {
             QueryScorer queryScorer = new QueryScorer(keyWordQuery);
@@ -151,6 +153,21 @@ public class DocsIndexDaoImpl implements DocsIndexDao {
                     }
 
                 }
+            }
+        }
+        //如果词语在黑名单中
+        if(resultList == null||resultList.getDocList()==null){
+            if(blacklist!=null&&Arrays.asList(blacklist).contains(searchContent)){
+                DocModel docModel = new DocModel();
+                docModel.setFileContent("您搜词语<span style=\"color:red\">"+searchContent+"</span>是敏感词汇");
+                List < DocModel> list = new ArrayList<>();list.add(docModel);
+                resultList.setDocList(list);
+            }
+            else {
+                DocModel docModel = new DocModel();
+                docModel.setFileContent("您搜词语<span style=\"color:red\">"+searchContent+"</span>暂时不存在");
+                List < DocModel> list = new ArrayList<>();list.add(docModel);
+                resultList.setDocList(list);
             }
         }
         return resultList;

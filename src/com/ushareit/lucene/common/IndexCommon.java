@@ -189,6 +189,10 @@ public class IndexCommon {
 		IndexCommon.analyzer = analyzer;
 //		indexReader=null;
 //		indexWriter=null;
+		indexWriter0 = null;
+		indexWriter1 = null;
+		indexReader0 = null;
+		indexReader1 = null;
 
 		//更改解析器后重新初始化IndexWriter
 		/*if (indexWriter != null) {
