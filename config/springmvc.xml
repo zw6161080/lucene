@@ -16,8 +16,8 @@
 		<property name="suffix" value=".jsp"/>
 	</bean>
 	<!-- SolrServer的配置 -->
-	<bean id="httpSolrServer" class="org.apache.solr.client.solrj.impl.HttpSolrServer">
-		<!-- index=0代表调用有一个构造参数的solrServer构造方法 -->
-		<constructor-arg index="0" value="http://localhost:8888/solr"/>
-	</bean>
+<!--	<bean id="httpSolrServer" class="org.apache.solr.client.solrj.impl.HttpSolrServer">-->
+<!--		&lt;!&ndash; index=0代表调用有一个构造参数的solrServer构造方法 &ndash;&gt;-->
+<!--		<constructor-arg index="0" value="http://localhost:8888/solr"/>-->
+<!--	</bean>-->
 </beans>

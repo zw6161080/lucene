@@ -1,5 +1,5 @@
 package com.ushareit.lucene.dao.impl;
-import java.awt.image.IndexColorModel;
+
 import java.io.*;
 
 
@@ -34,10 +34,41 @@ import java.beans.Transient;
 import java.util.*;
 
 public class DocsIndexDaoImpl implements DocsIndexDao {
+
+
     /**
      * 建立索引
      * @throws IOException
      */
+    @Test
+    @Override
+    public void createIndex() throws IOException{
+        delIndex();
+        IndexCommon.setAnalyzer(new IKAnalyzer());
+        buildIndex();
+        IndexCommon.setAnalyzer(new IKSynonymAnalyzer());
+        buildIndex();
+        IndexCommon.setAnalyzer(new IKPinyinAnalyzer("","none",false));
+        buildIndex();
+    }
+    @Test
+    //删除索引
+    public void delIndex(){
+        File fileIndex0 = new File(Config.getIndex0Path());
+        File fileIndex1 = new File(Config.getIndex1Path());
+        if(fileIndex0.exists()){
+            File[] files = fileIndex0.listFiles();
+            if(files != null)
+            for(File file : files)file.delete();
+        }
+
+        if(fileIndex1.exists()){
+            File[] files = fileIndex1.listFiles();
+            if(files != null)
+                for(File file : files)file.delete();
+        }
+
+    }
     @Test
     @Override
     public void buildIndex() throws IOException {
@@ -45,7 +76,7 @@ public class DocsIndexDaoImpl implements DocsIndexDao {
 
         IndexWriter indexWriter0 = null;
         IndexWriter indexWriter1 = null;
-        IndexCommon.setAnalyzer(new IKSynonymAnalyzer());
+        //IndexCommon.setAnalyzer(new IKSynonymAnalyzer());
         File file = new File(Config.getDocsPath());
         File[] files = file.listFiles();
         //建立索引
@@ -285,9 +316,9 @@ public class DocsIndexDaoImpl implements DocsIndexDao {
         BufferedReader r = new BufferedReader(new FileReader(file));
         String url = r.readLine();
         r.close();
-//        if(url.contains("http"))return url;
-//        else return null;
-        return "1";
+     /*  if(url.contains("http"))return url;
+        else return null;*/
+        return url;
     }
 
 

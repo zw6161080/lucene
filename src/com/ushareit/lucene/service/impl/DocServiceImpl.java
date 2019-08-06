@@ -1,5 +1,6 @@
 package com.ushareit.lucene.service.impl;
 import	java.awt.TextField;
+import java.io.IOException;
 
 import com.ushareit.lucene.dao.DocsIndexDao;
 import com.ushareit.lucene.dao.IndexDao;
@@ -18,6 +19,11 @@ public class DocServiceImpl implements DocService {
     @Override
     public DocResultModel getProductList(String searchString, int limit, String[] blackList, int page) throws Exception {
         return docsIndexDao.doSearchWithQueryParse(searchString,limit, blackList,page);
+    }
+
+    @Override
+    public void createIndex() throws IOException {
+        docsIndexDao.createIndex();
     }
 
 

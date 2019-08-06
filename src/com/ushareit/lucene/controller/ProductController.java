@@ -19,12 +19,12 @@ public class ProductController {
 		return "admin";
 	}
 
-	@RequestMapping(value="/admin", method=RequestMethod.POST)
+	/*@RequestMapping(value="/admin", method=RequestMethod.POST)
 	public String createIndex(Model model) {
 		productService.createIndexDump();
 		model.addAttribute("result", "索引库已经成功创建");
 		return "admin";
-	}
+	}*/
 	
 	@RequestMapping("/list")
 	public String queryProduct(String queryString, String catalog_name,

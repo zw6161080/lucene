@@ -14,7 +14,7 @@ public interface DocsIndexDao {
      * @throws IOException
      */
     void buildIndex() throws IOException;
-
+    void createIndex() throws IOException;
     /**
      * 删除所有的索引
      */
